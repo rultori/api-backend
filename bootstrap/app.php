@@ -11,9 +11,13 @@
 |
 */
 
+use GuzzleHttp\Client;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
+$ixayaBaseUrl = env('IXAYA_BASE_URL');
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +45,9 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->singleton(Client::class, function($app) use ($ixayaBaseUrl) {
+    return new Client(['base_uri' => $ixayaBaseUrl]);
+});
 /*
 |--------------------------------------------------------------------------
 | Return The Application
