@@ -19,7 +19,6 @@ class OrderController extends Controller
         $request->validate([
             'start_date' => 'date_format:Y-m-d',
             'end_date' => 'date_format:Y-m-d',
-            'sort' => 'in:ASC,DESC',
             'currency' => 'in:MXN,USD,EUR',
         ]);
 
