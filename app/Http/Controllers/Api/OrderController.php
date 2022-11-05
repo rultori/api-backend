@@ -129,6 +129,11 @@ class OrderController extends Controller
                             return [
                                 'type' => 'products',
                                 'id' => $product->id,
+                                'attributes' => [
+                                    'title' => $product->title,
+                                    'price' => $product->price,
+                                    'qty' => $product->qty,
+                                ]
                             ];
                         }, $order->products)
                     ]
